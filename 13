@@ -1,0 +1,11 @@
+<?php  //Sript PHP
+$Host = "localhost";         //Memilih host, Localhost berarti komputer itu sendiri
+$User = "root";             //Memilih user/pengguna
+$Password = "";             //Password, Biasanya Kosong
+$db       = "spkjazuly";         //Memilih Database
+$konek=mysql_connect($Host,$User,$Password)or die (mysql_error()); //Menghubungkan ke Mysql
+mysql_select_db ($db,$konek) or die (mysql_error("TIdak Terhubung Ke Server Mysql")); //Menghubungkan ke Mysql dan memilih Database
+mysql_query("insert INTO ranking (idr,alternatif,nilai,ranking) VALUE(DEFAULT,'$_GET[alternatif]','$_GET[nilaialternatif]','$_GET[rankingalternatif]')") //Perintah Mysql untuk mengisi tabel Tamu
+or die(mysql_error("Tidak Berhasil Menyimpan !"));  //Or Die (mysql_error()) Pesan Error
+echo "<h1>Berhasil Menyimpan Data</h1>"; 
+?>
