@@ -1,0 +1,13 @@
+$peringkat=0;
+//pencarian ranking terbesar ke terkecil berdasarkan value
+$ranking = array("$ATTT[0]" => "$HA[0]", "$ATTT[1]" => "$HA[1]");
+arsort($ranking);
+foreach ($ranking as $alternatif => $nilaialternatif) {
+	$peringkat++;
+    echo "
+	<th class='akhir'><input class='rankingakhir' type='text' name='alternatif[]' value='$alternatif' size='12' readonly></th>
+	<td class='akhir'><input class='nilaiakhir' type='text' name='nilaialternatif[]' value=".number_format($nilaialternatif, 3, '.', ',')." size='12' readonly></td>
+	<td class='akhir'><input class='rankakhir' type='text' name='rankingalternatif[]' value='$peringkat' size='12' readonly></td></tr>";
+	
+	}
+echo '<div class="akhir"><input class="akhir" type="submit" value="Simpan Ranking ke Database"></div></table></div></div>
