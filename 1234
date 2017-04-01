@@ -1,0 +1,30 @@
+<?php
+$title = "Simpan Ranking";
+include('header.php'); 
+?>
+<html>
+<head>
+<title>
+Save Data Input
+</title>
+</head>
+<body>
+<br><br><br>
+<?php  //Sript PHP
+var_dump($_GET);exit();
+$Host = "localhost";         //Memilih host, Localhost berarti komputer itu sendiri
+$User = "root";             //Memilih user/pengguna
+$Password = "";             //Password, Biasanya Kosong
+$db       = "spkjazuly";         //Memilih Database
+$konek=mysql_connect($Host,$User,$Password)or die (mysql_error()); //Menghubungkan ke Mysql
+mysql_select_db ($db,$konek) or die (mysql_error("TIdak Terhubung Ke Server Mysql")); //Menghubungkan ke Mysql dan memilih Database
+mysql_query("insert INTO ranking VALUE(DEFAULT,'$_GET[alternatif]','$_GET[nilaialternatif]','$_GET[rankingalternatif]')") //Perintah Mysql untuk mengisi tabel Tamu
+or die(mysql_error("Tidak Berhasil Menyimpan !"));  //Or Die (mysql_error()) Pesan Error
+echo "<h1>Berhasil Menyimpan Data</h1>"; 
+?>
+<a href="../perhitungan.php">Kembali ke Perhitungan</a>
+</body>
+</html>
+<?php 
+include('footer.php');
+ ?>
