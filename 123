@@ -1,0 +1,31 @@
+echo '
+<h3 class="alternatif">Ranking</h3>
+<form method="get" action="inputdatabase/simpanranking.php">
+<table class="footable">
+<tr>
+<th class="judul">Alternatif</th>
+<th>Nilai</th>
+<th class="jumlah">Rank</th>
+</tr>
+<tr>';
+
+	$HA = array();
+    $HA[0] = ($TAAAC1[0]*$BPK2[0])+($TAAAC2[0]*$BPK2[1])+($TAAAC3[0]*$BPK2[2]);
+	$HA[1] = ($TAAAC1[1]*$BPK2[0])+($TAAAC2[1]*$BPK2[1])+($TAAAC3[1]*$BPK2[2]);
+
+//penomoran otomatis
+$peringkat=0;
+//pencarian ranking terbesar ke terkecil berdasarkan value
+$ranking = array("$ATTT[0]" => "$HA[0]", "$ATTT[1]" => "$HA[1]");
+arsort($ranking);
+foreach ($ranking as $alternatif => $nilaialternatif) {
+	$peringkat++;
+    echo "
+	<th class='akhir'><input class='rankingakhir' type='text' name='alternatif[]' value='$alternatif' size='12' readonly></th>
+	<td class='akhir'><input class='nilaiakhir' type='text' name='nilaialternatif[]' value=".number_format($nilaialternatif, 3, '.', ',')." size='12' readonly></td>
+	<td class='akhir'><input class='rankakhir' type='text' name='rankingalternatif[]' value='$peringkat' size='12' readonly></td></tr>";
+	
+	}
+echo '<div class="akhir"><input class="akhir" type="submit" value="Simpan Ranking ke Database"></div></table></div></div>
+
+</form>
